@@ -38,7 +38,7 @@ class Main {
 		$this->define_constants();
 
 		// Add Hooks here.
-		add_shortcode( 'sepomex_hello', array( $this, 'hello_world_shortcode' ) );
+		add_shortcode( 'sepomex_form', array( $this, 'sepomex_form_shortcode' ) );
 	}
 
 	/**
@@ -71,11 +71,32 @@ class Main {
 	}
 
 	/**
-	 * Handle the sepomex_hello shortcode.
+	 * Handle the sepomex_form shortcode.
 	 *
 	 * @return string The HTML output for the shortcode.
 	 */
-	public function hello_world_shortcode() {
-		return '<h1>Hello World from Sepomex API!</h1>';
+	public function sepomex_form_shortcode() {
+		ob_start();
+		?>
+		<div class="sepomex-api-form">
+			<h2>Sepomex API Form</h2>
+			<form method="post" action="">
+				<div>
+					<label for="zipcode">Enter Zip Code:</label>
+					<input type="text" id="zipcode" name="zipcode" maxlength="5" placeholder="12345" required>
+				</div>
+				<div>
+					<label for="state">Select State:</label>
+					<select id="state" name="state" required>
+						<option value="">Choose a state...</option>
+					</select>
+				</div>
+				<div>
+					<input type="submit" value="Submit">
+				</div>
+			</form>
+		</div>
+		<?php
+		return ob_get_clean();
 	}
 }
