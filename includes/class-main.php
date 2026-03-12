@@ -39,6 +39,7 @@ class Main {
 
 		// Add Hooks here.
 		add_shortcode( 'sepomex_form', array( $this, 'sepomex_form_shortcode' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -83,7 +84,7 @@ class Main {
 			<form method="post" action="">
 				<div>
 					<label for="zipcode">Enter Zip Code:</label>
-					<input type="text" id="zipcode" name="zipcode" maxlength="5" placeholder="12345" required>
+					<input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" id="zipcode" name="zipcode" required>
 				</div>
 				<div>
 					<label for="state">Select State:</label>
@@ -98,5 +99,18 @@ class Main {
 		</div>
 		<?php
 		return ob_get_clean();
+	}
+
+	/**
+	 * Enqueue scripts and styles.
+	 */
+	public function enqueue_scripts() {
+		wp_enqueue_script(
+			'sepomex-api-js',
+			\Sepomex_API\PLUGIN_URL . 'assets/js/sepomex-api.js',
+			array( 'jquery' ),
+			\Sepomex_API\VERSION,
+			true
+		);
 	}
 }
