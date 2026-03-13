@@ -3,7 +3,16 @@ jQuery(document).ready(function($) {
         var zipcode = $(this).val();
         if (zipcode.length === 5) {
             console.log('Zip code complete:', zipcode);
-            // TODO: Make API call to get states
+            $.ajax({
+                url: 'https://sepomex.icalialabs.com/api/v1/zip_codes?zip_code=' + zipcode,
+                method: 'GET',
+                success: function(data) {
+                    console.log('API result:', data);
+                },
+                error: function(xhr, status, error) {
+                    console.log('API error:', error);
+                }
+            });
         }
     });
 });
