@@ -7,7 +7,8 @@ jQuery(document).ready(function($) {
             var states = data.states;
             var $stateSelect = $('#state');
             states.forEach(function(state) {
-                $stateSelect.append('<option value="' + state.id + '">' + state.name + '</option>');
+                var id = state.id < 10 ? '0' + state.id : state.id;
+                $stateSelect.append('<option value="' + id + '">' + state.name + '</option>');
             });
         },
         error: function(xhr, status, error) {
@@ -24,6 +25,10 @@ jQuery(document).ready(function($) {
                 method: 'GET',
                 success: function(data) {
                     console.log('API result:', data);
+                    if (data.zip_codes && data.zip_codes.length > 0) {
+                        var c_estado = data.zip_codes[0].c_estado;
+                        $('#state').val(c_estado);
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.log('API error:', error);
