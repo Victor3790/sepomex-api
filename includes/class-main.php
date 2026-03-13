@@ -93,6 +93,12 @@ class Main {
 					</select>
 				</div>
 				<div>
+					<label for="municipality">Select Municipality:</label>
+					<select id="municipality" name="municipality" required>
+						<option value="">Choose a municipality...</option>
+					</select>
+				</div>
+				<div>
 					<input type="submit" value="Submit">
 				</div>
 			</form>

@@ -28,6 +28,24 @@ jQuery(document).ready(function($) {
                     if (data.zip_codes && data.zip_codes.length > 0) {
                         var c_estado = data.zip_codes[0].c_estado;
                         $('#state').val(c_estado);
+                        
+                        // Populate municipalities
+                        var $municipalitySelect = $('#municipality');
+                        $municipalitySelect.find('option:not(:first)').remove(); // Clear previous options except placeholder
+                        var municipalities = {};
+                        data.zip_codes.forEach(function(zip) {
+                            if (!municipalities[zip.c_mnpio]) {
+                                municipalities[zip.c_mnpio] = zip.d_mnpio;
+                            }
+                        });
+                        for (var c_mnpio in municipalities) {
+                            $municipalitySelect.append('<option value="' + c_mnpio + '">' + municipalities[c_mnpio] + '</option>');
+                        }
+                        // Auto-select the first municipality
+                        var firstMnpio = Object.keys(municipalities)[0];
+                        if (firstMnpio) {
+                            $municipalitySelect.val(firstMnpio);
+                        }
                     }
                 },
                 error: function(xhr, status, error) {
