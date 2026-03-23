@@ -82,23 +82,23 @@ class Main {
 		<div class="sepomex-api-form">
 			<h2>Sepomex API Form</h2>
 			<form method="post" action="">
-				<div>
-					<label for="zipcode">Código Postal:</label>
-					<input class="form-control" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" id="zipcode" name="zipcode" required>
+				<div class="mt-3">
+					<label class="sepomex-label" for="zipcode">Código Postal:</label>
+					<input class="sepomex-form-control" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" id="zipcode" name="zipcode" required>
 				</div>
-				<div>
-					<label for="state">Estado:</label>
-					<select id="state" name="state" required>
+				<div class="mt-3">
+					<label class="sepomex-label" for="state">Estado:</label>
+					<select class="sepomex-form-control" id="state" name="state" required>
 						<option value="">Choose a state...</option>
 					</select>
 				</div>
-				<div>
-					<label for="municipality">Municipio:</label>
-					<select id="municipality" name="municipality" required>
+				<div class="mt-3">
+					<label class="sepomex-label" for="municipality">Municipio:</label>
+					<select class="sepomex-form-control" id="municipality" name="municipality" required>
 						<option value="">Choose a municipality...</option>
 					</select>
 				</div>
-				<div>
+				<div class="mt-3">
 					<input type="submit" value="Submit">
 				</div>
 			</form>
@@ -111,6 +111,13 @@ class Main {
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts() {
+		wp_enqueue_style(
+			'sepomex-api-css',
+			\Sepomex_API\PLUGIN_URL . 'assets/css/styles.css',
+			array(),
+			\Sepomex_API\VERSION
+		);
+
 		wp_enqueue_script(
 			'sepomex-api-js',
 			\Sepomex_API\PLUGIN_URL . 'assets/js/sepomex-api.js',
