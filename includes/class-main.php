@@ -83,17 +83,17 @@ class Main {
 			<h2>Sepomex API Form</h2>
 			<form method="post" action="">
 				<div>
-					<label for="zipcode">Enter Zip Code:</label>
-					<input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" id="zipcode" name="zipcode" required>
+					<label for="zipcode">Código Postal:</label>
+					<input class="form-control" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" id="zipcode" name="zipcode" required>
 				</div>
 				<div>
-					<label for="state">Select State:</label>
+					<label for="state">Estado:</label>
 					<select id="state" name="state" required>
 						<option value="">Choose a state...</option>
 					</select>
 				</div>
 				<div>
-					<label for="municipality">Select Municipality:</label>
+					<label for="municipality">Municipio:</label>
 					<select id="municipality" name="municipality" required>
 						<option value="">Choose a municipality...</option>
 					</select>
