@@ -84,21 +84,36 @@ class Main {
 			<form method="post" action="">
 				<div class="mt-3">
 					<label class="sepomex-label" for="zipcode">Código Postal:</label>
-					<input class="sepomex-form-control" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" id="zipcode" name="zipcode" required>
+					<input 
+						class="sepomex-form-control" 
+						type="text" 
+						inputmode="numeric" 
+						pattern="[0-9]*" 
+						maxlength="5" 
+						id="zipcode" 
+						name="zipcode" 
+						required placeholder="Ingresa tu código postal..."
+					>
 				</div>
 				<div class="mt-3">
 					<label class="sepomex-label" for="state">Estado:</label>
 					<select class="sepomex-form-control" id="state" name="state" required>
-						<option value="">Choose a state...</option>
+						<option value="">Selecciona un estado...</option>
 					</select>
 				</div>
 				<div class="mt-3">
 					<label class="sepomex-label" for="municipality">Municipio:</label>
 					<select class="sepomex-form-control" id="municipality" name="municipality" required>
-						<option value="">Choose a municipality...</option>
+						<option value="">Selecciona un municipio...</option>
 					</select>
 				</div>
-				<div class="mt-3">
+				<div class="mt-3">				
+					<label class="sepomex-label" for="colonia">Colonia:</label>
+					<select class="sepomex-form-control" id="colonia" name="colonia" required>
+						<option value="">Selecciona una colonia...</option>
+					</select>
+				</div>
+				<div class="mt-3">					
 					<input type="submit" value="Submit">
 				</div>
 			</form>
