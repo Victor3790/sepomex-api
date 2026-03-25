@@ -46,6 +46,24 @@ jQuery(document).ready(function($) {
                         if (firstMnpio) {
                             $municipalitySelect.val(firstMnpio);
                         }
+
+                        // Populate colonias (settlements)
+                        var $coloniaSelect = $('#colonia');
+                        $coloniaSelect.find('option:not(:first)').remove(); // Clear previous options except placeholder
+                        var colonias = {};
+                        data.zip_codes.forEach(function(zip) {
+                            if (!colonias[zip.id]) {
+                                colonias[zip.id] = zip.d_asenta;
+                            }
+                        });
+                        for (var id in colonias) {
+                            $coloniaSelect.append('<option value="' + id + '">' + colonias[id] + '</option>');
+                        }
+                        // Auto-select the first colonia
+                        var firstColonia = Object.keys(colonias)[0];
+                        if (firstColonia) {
+                            $coloniaSelect.val(firstColonia);
+                        }
                     }
                 },
                 error: function(xhr, status, error) {
